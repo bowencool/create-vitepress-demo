@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs';
 // import md5 from 'md5';
 import { highlight } from 'vitepress/dist/node/serve-61783397.js';
+import { config as vitepressConfig } from '../../config';
 
 let count = 1001;
 const scriptSetupRE = /<\s*script[^>]*\bsetup\b[^>]*/;
@@ -158,7 +159,7 @@ function genDemo(meta, md: MarkdownIt) {
       attrsStr += ` iframe`;
       demos[localName] = { title: meta.title, entry: absolutePath };
       fs.writeFileSync(path.resolve(process.cwd(), 'node_modules/demos.json'), JSON.stringify(demos, null, 2));
-      htmlOpenString += ` ${attrsStr}><iframe src="/~demos/${localName}.html"`;
+      htmlOpenString += ` ${attrsStr}><iframe src="${vitepressConfig.base || '/'}~demos/${localName}.html"`;
       // <DemoContainer title="基本使用" ><iframe src="/~demos/${localName}.html"`
       if (meta.iframeHeight) {
         htmlOpenString += ` height="${meta.iframeHeight}"`;

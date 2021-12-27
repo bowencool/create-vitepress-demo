@@ -1,3 +1,3 @@
 # Home
 
-[Guide](/guide/contribution)
+[Guide](./guide/contribution)
