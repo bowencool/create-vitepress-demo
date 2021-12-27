@@ -58,7 +58,7 @@ module.exports = function renderDir(workingDir, sourceDir, destDir, meta, defaul
 
   async function askQuestions(files, metalsmith, done) {
     if (defaultValues) {
-      meta.prompts.forEach(q => {
+      meta.prompts.forEach((q) => {
         if (defaultValues[q.name] !== undefined) {
           q.default = defaultValues[q.name];
         }
@@ -77,13 +77,14 @@ module.exports = function renderDir(workingDir, sourceDir, destDir, meta, defaul
     // const metadata = metalsmith.metadata();
 
     const fileNames = Object.keys(files);
-    Object.keys(filters).forEach(glob => {
-      fileNames.forEach(file => {
+    Object.keys(filters).forEach((glob) => {
+      fileNames.forEach((file) => {
         // const glob = pattern + '.bhs'
         const condition = filters[glob];
-        const matched = match(file, glob, { dot: true })
-          || match(file, `${glob}.hbs`, { dot: true })
-          || match(file, `${glob}.ejs`, { dot: true });
+        const matched =
+          match(file, glob, { dot: true }) ||
+          match(file, `${glob}.hbs`, { dot: true }) ||
+          match(file, `${glob}.ejs`, { dot: true });
         // if (file.endsWith('.hbs')) {}
         // console.log(glob, file, matched);
         if (matched) {
@@ -100,7 +101,7 @@ module.exports = function renderDir(workingDir, sourceDir, destDir, meta, defaul
   }
   function compileFiles(files, metalsmith, done) {
     // const metadata = metalsmith.metadata();
-    Object.keys(files).forEach(fileName => {
+    Object.keys(files).forEach((fileName) => {
       if (fileName.endsWith('.hbs')) {
         const file = files[fileName];
         delete files[fileName];

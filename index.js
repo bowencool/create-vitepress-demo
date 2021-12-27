@@ -1,58 +1,58 @@
-const renderDir = require("./renderDir");
-const path = require("path");
-const fs = require("fs");
-const inquirer = require("inquirer");
-const argv = require("minimist")(process.argv.slice(2));
-const execAsync = require("./execAsync");
+const renderDir = require('./renderDir');
+const path = require('path');
+const fs = require('fs');
+const inquirer = require('inquirer');
+const argv = require('minimist')(process.argv.slice(2));
+// const execAsync = require("./execAsync");
 
 async function main() {
   let projectName = argv?._?.[0];
-  if (!projectName || typeof projectName !== "string") {
+  if (!projectName || typeof projectName !== 'string') {
     const ans = await inquirer.prompt([
       {
-        type: "input",
-        name: "projectName",
-        message: "目录名",
+        type: 'input',
+        name: 'projectName',
+        message: '目录名',
       },
     ]);
     projectName = ans.projectName;
   }
   const targetCwd = path.resolve(process.cwd(), projectName);
   if (fs.existsSync(targetCwd)) {
-    throw new Error("目录已存在");
+    throw new Error('目录已存在');
   }
-  console.log("rendering...", projectName);
+  console.log('rendering...', projectName);
   // await execAsync("rm -rf .init-tmp");
   // await execAsync("mkdir .init-tmp");
   // renderDir()
   await renderDir(
     // `${process.cwd()}/.init-tmp`,
     __dirname,
-    "template",
+    'template',
     `${process.cwd()}/${projectName}`,
     {
       prompts: [
         {
-          type: "string",
-          name: "name",
+          type: 'string',
+          name: 'name',
           default: projectName,
           required: true,
-          message: "名称",
+          message: '名称',
           validate(v) {
             if (/^[a-z][A-z0-9-]*$/.test(v)) {
               return true;
             }
-            return "输入不合法";
+            return '输入不合法';
           },
         },
         {
-          type: "string",
-          name: "description",
-          default: "description",
-          message: "描述",
+          type: 'string',
+          name: 'description',
+          default: 'description',
+          message: '描述',
         },
       ],
-    }
+    },
   );
 }
 
