@@ -21,5 +21,14 @@
   "bugs": {
     "url": "https://github.com/bowencool/create-vitepress-demo/issues"
   },
-  "homepage": "https://github.com/bowencool/create-vitepress-demo#readme"
+  "homepage": "https://github.com/bowencool/create-vitepress-demo#readme",
+  "dependencies": {
+    "chalk": "^4",
+    "ejs": "^3",
+    "handlebars": "^4",
+    "inquirer": "^7",
+    "metalsmith": "^2",
+    "minimatch": "^3",
+    "minimist": "^1"
+  }
 }
