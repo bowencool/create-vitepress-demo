@@ -5,6 +5,7 @@
   "main": "index.js",
   "files": [
     "template",
+    ".gitignore",
     "*.js"
   ],
   "bin": {
