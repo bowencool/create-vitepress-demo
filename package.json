@@ -36,6 +36,7 @@
   "dependencies": {
     "chalk": "^4",
     "ejs": "^3",
+    "fs-extra": "^10.0.0",
     "handlebars": "^4",
     "inquirer": "^7",
     "metalsmith": "^2",

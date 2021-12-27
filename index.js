@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const renderDir = require('./renderDir');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const inquirer = require('inquirer');
 const argv = require('minimist')(process.argv.slice(2));
 const execAsync = require('./execAsync');
@@ -56,7 +56,8 @@ async function main() {
     },
   );
   // todo 这个文件不太灵
-  await fs.copyFileSync(__dirname + '.gitignore', `${process.cwd()}/${projectName}/.gitignore`);
+  // await fs.copySync(__dirname + '.gitignore', `${targetDir}/.gitignore`);
+  await execAsync(`cp ${__dirname}/template/.gitignore ${targetDir}/.gitignore`);
   // todo 这个link不太灵
   await execAsync(`ln -s ../CHANGELOG.md changelog.md`, { cwd: `${targetDir}/website` });
 
