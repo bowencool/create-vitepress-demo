@@ -1,7 +1,6 @@
 <script lang="ts">
   import { computed, defineComponent, onMounted, PropType, ref } from 'vue';
   import useCopy from './useCopy';
-  import ElCollapseTransition from './ElCollapseTransition.vue';
 
   type FileDTO = {
     filePath: string;
@@ -12,9 +11,6 @@
   };
 
   export default defineComponent({
-    components: {
-      ElCollapseTransition,
-    },
     props: {
       title: {
         type: String,
@@ -148,28 +144,28 @@
           </div>
         </div>
       </div>
-      <ElCollapseTransition>
-        <div v-show="sourceVisible">
-          <div
-            v-if="currentFile?.htmlStr"
-            v-html="decodeURIComponent(currentFile.htmlStr)"
-            key="highlight"
-            :class="`language-${currentFile.language} source-code-wrapper`"
-          />
-          <div
-            v-else-if="currentFile?.codeStr"
-            key="raw"
-            :class="`language-${currentFile.language} source-code-wrapper`"
-            style="color: white"
-          >
-            <pre>{{ currentFile.codeStr }}</pre>
-          </div>
-          <div class="botton-collapse-button" key="button" @click="sourceVisible = false">
-            <img src="./icons/caret-top.svg" class="icon" />
-            收起
-          </div>
+      <!-- <ElCollapseTransition> -->
+      <template v-if="sourceVisible">
+        <div
+          v-if="currentFile?.htmlStr"
+          v-html="decodeURIComponent(currentFile.htmlStr)"
+          key="highlight"
+          :class="`language-${currentFile.language} source-code-wrapper`"
+        />
+        <div
+          v-else-if="currentFile?.codeStr"
+          key="raw"
+          :class="`language-${currentFile.language} source-code-wrapper`"
+          style="color: white"
+        >
+          <pre>{{ currentFile.codeStr }}</pre>
         </div>
-      </ElCollapseTransition>
+        <div class="botton-collapse-button" key="button" @click="sourceVisible = false">
+          <img src="./icons/caret-top.svg" class="icon" />
+          收起
+        </div>
+      </template>
+      <!-- </ElCollapseTransition> -->
     </section>
   </ClientOnly>
 </template>

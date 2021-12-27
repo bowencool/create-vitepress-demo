@@ -25,6 +25,7 @@
 
 <demo
   src="./demo.vue"
+  file="../index.md"
   title="我是一个可选的标题"
   compact
   desc="我是一段可选的描述，我可以用 `Markdown` 编写。"
@@ -33,6 +34,7 @@
 ```markdown
 <demo
   src="./demo.vue"
+  file="../index.md"
   title="我是一个可选的标题"
   compact
   desc="我是一段可选的描述，我可以用 `Markdown` 编写。"
