@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const argv = require('minimist')(process.argv.slice(2));
-// const execAsync = require("./execAsync");
+const execAsync = require('./execAsync');
 
 async function main() {
   let projectName = argv?._?.[0];
@@ -17,8 +17,8 @@ async function main() {
     ]);
     projectName = ans.projectName;
   }
-  const targetCwd = path.resolve(process.cwd(), projectName);
-  if (fs.existsSync(targetCwd)) {
+  const targetDir = path.resolve(process.cwd(), projectName);
+  if (fs.existsSync(targetDir)) {
     throw new Error('目录已存在');
   }
   console.log(__dirname, 'rendering...');
@@ -52,6 +52,9 @@ async function main() {
           message: '描述',
         },
       ],
+      done() {
+        await execAsync(`ln -s ../CHANGELOG.md changelog.md`, `${targetDir}/website`);
+      },
     },
   );
 }
