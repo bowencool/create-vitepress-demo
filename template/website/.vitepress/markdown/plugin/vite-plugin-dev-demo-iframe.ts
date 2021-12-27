@@ -9,14 +9,14 @@ export default function demoIframe(): Plugin {
     // 在插件里加入口也是行不通的，vitepress 没有留余地，而且我们的终极目标不仅仅是 html，所以就放弃了。
     // config(rawConfig) {
     //   console.log('demo-iframe config', rawConfig.build.rollupOptions);
-    //   rawConfig.build.rollupOptions.input['~demos_abc'] = '/Users/xxx/xx/abc.html';
+    //   rawConfig.build.rollupOptions.input['-demos_abc'] = '/Users/xxx/xx/abc.html';
     // },
     configureServer(server: ViteDevServer) {
       return () => {
         server.middlewares.use(async (req, res, next) => {
           // console.log('req', req.url);
           // if not demo html, next it.
-          if (req.url?.match(/^\/~demos\/(\w+)\.html/)) {
+          if (req.url?.match(/^\/-demos\/(\w+)\.html/)) {
             const demoName = RegExp.$1;
             // console.log('接到 demo iframe 请求', demoName);
             // 我不知道 markdown-it-plugin 怎么跟 vite-plugin 低成本取得联系，所以直接通过文件传参了。这个文件是 markdown-it-demo 生成的。

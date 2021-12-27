@@ -14,7 +14,7 @@ const demos: Record<string, IframeMeta> = JSON.parse(
 );
 
 // 虚拟的目录名，和 devServer 保持一致
-const dir = resolve(process.cwd(), '~demos');
+const dir = resolve(process.cwd(), '-demos');
 
 const iframeConfig: UserConfig = {
   plugins: [
@@ -24,13 +24,13 @@ const iframeConfig: UserConfig = {
     {
       name: 'demo-iframe-build',
       resolveId(id) {
-        if (id.match(/\/~demos\/(\w+)\.html/)) {
+        if (id.match(/\/-demos\/(\w+)\.html/)) {
           return id;
         }
         return undefined;
       },
       load(id) {
-        if (id.match(/\/~demos\/(\w+)\.html/)) {
+        if (id.match(/\/-demos\/(\w+)\.html/)) {
           const demoName = RegExp.$1;
           const meta = demos[demoName];
           if (meta) {
