@@ -1,0 +1,1 @@
+import{o as n,c as a}from"./runtime-core.esm-bundler.7edfc1de.js";var s=(e,r)=>{const t=e.__vccOpts||e;for(const[o,c]of r)t[o]=c;return t};const _={};function d(e,r){return n(),a("button",null,"\u6211\u662F demo")}var l=s(_,[["render",d]]);export{l as default};
