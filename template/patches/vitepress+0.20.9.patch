@@ -1,0 +1,30 @@
+diff --git a/node_modules/vitepress/dist/node/serve-61783397.js b/node_modules/vitepress/dist/node/serve-61783397.js
+index 2f64241..0896518 100644
+--- a/node_modules/vitepress/dist/node/serve-61783397.js
++++ b/node_modules/vitepress/dist/node/serve-61783397.js
+@@ -34324,6 +34324,8 @@ const highlight = (str, lang) => {
+   return wrap(str, "text");
+ };
+ 
++exports.highlight = highlight;
++
+ var remove = removeDiacritics;
+ 
+ var replacementList = [
+@@ -36336,6 +36338,7 @@ function createMarkdownToVueRenderFn(srcDir, options = {}, pages, userDefines, i
+       return content2;
+     });
+     const { content, data: frontmatter } = grayMatter(src);
++    md.urlPath = file;
+     let { html, data } = md.render(content);
+     if (isBuild) {
+       html = html.replace(/\bimport\.meta/g, "import.<wbr/>meta").replace(/\bprocess\.env/g, "process.<wbr/>env");
+@@ -36615,7 +36618,7 @@ function createVitePressPlugin(root, siteConfig, ssr = false, pageToHashMap, cli
+     },
+     renderStart() {
+       if (hasDeadLinks) {
+-        throw new Error(`One or more pages contain dead links.`);
++        // throw new Error(`One or more pages contain dead links.`);
+       }
+     },
+     configureServer(server) {
