@@ -21,7 +21,7 @@ async function main() {
   if (fs.existsSync(targetCwd)) {
     throw new Error('目录已存在');
   }
-  console.log('rendering...', projectName);
+  console.log(__dirname, 'rendering...');
   // await execAsync("rm -rf .init-tmp");
   // await execAsync("mkdir .init-tmp");
   // renderDir()
