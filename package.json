@@ -1,0 +1,25 @@
+{
+  "name": "create-vitepress-demo",
+  "version": "0.1.0",
+  "description": "create a vitepress projects with markdown-it-demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bowencool/create-vitepress-demo.git"
+  },
+  "keywords": [
+    "vitepress",
+    "markdown",
+    "demo",
+    "iframe"
+  ],
+  "author": "bowencool",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bowencool/create-vitepress-demo/issues"
+  },
+  "homepage": "https://github.com/bowencool/create-vitepress-demo#readme"
+}
