@@ -1,1 +1,3 @@
-# 首页
+# Home
+
+[Guide](/guide/contribution)

@@ -131,7 +131,7 @@ function genDemo(meta, md: MarkdownIt) {
   }
 
   if (!srcFile) {
-    let errorStr = `NotFound: file not found\n\t${meta.src}\n\t${srcFile.filePath}`;
+    let errorStr = `NotFound: file not found\n\t${meta.src}`;
     throw new Error(errorStr);
     // attrsStr += ` codeStr="${encodeURIComponent(errorStr)}"`;
     // htmlOpenString += ` ${attrsStr}><pre>${errorStr}</pre>`;

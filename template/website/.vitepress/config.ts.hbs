@@ -21,15 +21,16 @@ export const config: UserConfig = {
   themeConfig: {
     sidebar: false,
     nav: [
-      { text: '指南', link: '/', exact: true },
+      { text: '首页', link: '/', exact: true },
+      { text: '指南', link: '/guide/contribution', activeMatch: '^/guide/' },
       {
         text: '发布日志',
         link: '/changelog',
       },
-      {
-        text: 'Github',
-        link: 'https://github.com/bowencool/copy-async',
-      },
+      // {
+      //   text: 'Github',
+      //   link: 'https://github.com/todo',
+      // },
     ],
   },
 };
