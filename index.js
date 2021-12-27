@@ -52,8 +52,8 @@ async function main() {
           message: '描述',
         },
       ],
-      done() {
-        await execAsync(`ln -s ../CHANGELOG.md changelog.md`, `${targetDir}/website`);
+      async done() {
+        await execAsync(`ln -s ../CHANGELOG.md changelog.md`, { cwd: `${targetDir}/website` });
       },
     },
   );
