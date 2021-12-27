@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const renderDir = require('./renderDir');
 const path = require('path');
 const fs = require('fs');
