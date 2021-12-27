@@ -1,6 +1,6 @@
 # create-vitepress-demo
 
-搭建一个带有专业 demo 演示能力的 vitepress 项目。
+搭建一个带有专业 demo 演示能力的 vitepress 项目。[示例站点](https://bowencool.github.io/create-vitepress-demo/guide/contribution.html)
 
 With NPM:
 
