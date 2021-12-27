@@ -53,11 +53,12 @@ async function main() {
           message: '描述',
         },
       ],
-      async done() {
-        await execAsync(`ln -s ../CHANGELOG.md changelog.md`, { cwd: `${targetDir}/website` });
-      },
     },
   );
+  // todo 这个文件不太灵
+  await fs.copyFileSync(__dirname + '.gitignore', `${process.cwd()}/${projectName}/.gitignore`);
+  // todo 这个link不太灵
+  await execAsync(`ln -s ../CHANGELOG.md changelog.md`, { cwd: `${targetDir}/website` });
 
   await execAsync('rm -rf .git', { cwd: targetDir });
   try {
