@@ -57,6 +57,17 @@ async function main() {
       },
     },
   );
+
+  await execAsync('rm -rf .git', { cwd: targetDir });
+  try {
+    await execAsync('git init -b main', { cwd: targetDir });
+  } catch (error) {
+    await execAsync('git init && git checkout -b main', { cwd: targetDir });
+  }
+  await execAsync("git add . && git commit -nam 'init'", { cwd: targetDir });
+
+  await execAsync('rm -rf .init-tmp');
+  console.log('✨ done');
 }
 
 main();
