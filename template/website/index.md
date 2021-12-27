@@ -1,0 +1,3 @@
+# Home
+
+[Guide](/guide/contribution)
