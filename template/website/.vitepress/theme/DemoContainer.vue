@@ -128,9 +128,18 @@
         </div>
 
         <!-- @tab-click="onTabChange" -->
-        <el-tabs v-model="currentTab" v-if="sourceVisible && files.length > 1" class="theTab" size="mini">
-          <el-tab-pane v-for="file in files" :key="file.name" :label="file.name" :name="file.name"></el-tab-pane>
-        </el-tabs>
+        <div class="theTab" v-if="sourceVisible && files.length > 1">
+          <span
+            v-for="file in files"
+            :key="file.name"
+            :title="file.name"
+            @click="currentTab = file.name"
+            :class="{ active: currentTab === file.name }"
+          >
+            {{ file.name }}
+          </span>
+        </div>
+
         <div v-if="files.length > 0" class="demo-buttons" style="margin-left: auto">
           <div class="tooltip">
             <img class="icon" v-if="copied" src="./icons/success.svg" />
@@ -228,19 +237,12 @@
   }
 
   .theTab {
-    :deep(.el-tabs__nav-scroll) {
-      // background-color: #b8cbf1;
-      padding-left: 20px;
-    }
-    // :deep(.el-tabs__nav) {
-    //   border-radius: 0 !important;
-    //   border-left: 0 !important;
-    // }
-    :deep(.el-tabs__header) {
-      margin: 0;
-    }
-    :deep(.el-tabs__item) {
-      height: 39px;
+    span {
+      padding: 9px;
+      cursor: pointer;
+      &.active {
+        border-bottom: 3px solid var(--c-brand);
+      }
     }
   }
   .source-code-wrapper {
