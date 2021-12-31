@@ -40,22 +40,21 @@ const config: UserConfig = {
     vueJsx(),
     rollupReplace({ values: replacement, preventAssignment: true }),
     demoIframe(),
-    process.env.NODE_ENV === 'development' &&
-      TsChecker({
-        vite: {
-          overlay: true,
-        },
-        checker: {
-          typescript: {
-            extensions: {
-              vue: {
-                enabled: true,
-                compiler: '@vue/compiler-sfc',
-              },
+    TsChecker({
+      vite: {
+        overlay: true,
+      },
+      checker: {
+        typescript: {
+          extensions: {
+            vue: {
+              enabled: true,
+              compiler: '@vue/compiler-sfc',
             },
           },
         },
-      }),
+      },
+    }),
     // process.env.NODE_ENV === 'development' &&
     //   eslintPlugin({
     //     include: 'packages/**/*.{vue,js,jsx,ts,tsx}',

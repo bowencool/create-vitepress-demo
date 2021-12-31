@@ -11,9 +11,9 @@
     "packages"
   ],
   "scripts": {
-    "dev": "vitepress dev website",
+    "dev": "NODE_ENV=development vitepress dev website",
     "build": "NODE_ENV=production rollup -c build/rollup.config.comps.js",
-    "build:docs": "vitepress build website && npm run build:demos",
+    "build:docs": "NODE_ENV=production vitepress build website && npm run build:demos",
     "build:demos": "vite build -c=website/.vitepress/markdown/plugin/build-demos.vite.config.ts",
     "predev": "check-versions && ([ -d es ] || npm run build) && patch-package",
     "prebuild": "check-versions && rm -rf es cjs && patch-package",
