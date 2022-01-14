@@ -3,6 +3,9 @@
   "version": "0.1.11",
   "description": "搭建一个带有专业 demo 演示能力的 vitepress 项目",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "template",
     ".gitignore",

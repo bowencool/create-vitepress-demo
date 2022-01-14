@@ -18,9 +18,9 @@
     "predev": "check-versions && ([ -d es ] || npm run build) && patch-package",
     "prebuild": "check-versions && rm -rf es cjs && patch-package",
     "prebuild:docs": "([ -d es ] || npm run build) && patch-package",
-    "preversion": "scripts/check-version-bump.js && npm run build",
+    "preversion": "scripts/check-version-bump.js",
     "version": "conventional-changelog --skip-unstable -p angular -i changelog.md -s && git add changelog.md",
-    "prepublishOnly": "scripts/check-dist-tag.js",
+    "prepublishOnly": "scripts/check-dist-tag.js && npm run build",
     "postpublish": "git push && git push --tags"
   },
   "engines": {

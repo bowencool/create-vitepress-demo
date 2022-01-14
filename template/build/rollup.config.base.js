@@ -12,7 +12,7 @@ import { replacement } from './common.config';
 
 export const INPUT_PATH = resolve(__dirname, '../packages');
 
-const deps = Object.keys(pkg.peerDependencies)
+const deps = Object.keys(pkg.peerDependencies || {})
   .concat(Object.keys(pkg.dependencies))
   .concat(Object.keys(pkg.devDependencies))
   .concat([/node_modules/]);
