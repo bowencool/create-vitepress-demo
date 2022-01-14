@@ -3,7 +3,7 @@ import MarkdownIt from 'markdown-it';
 import path from 'path';
 import fs from 'fs';
 // import md5 from 'md5';
-import { highlight } from 'vitepress/dist/node/serve-61783397.js';
+import { highlight } from 'vitepress/dist/node/serve-9731a371.js';
 import { config as vitepressConfig } from '../../config';
 
 let count = 1001;
@@ -99,7 +99,7 @@ const demos = {};
 /** 将demo信息拼接成 html(vue template) 字符串 */
 function genDemo(meta, md: MarkdownIt) {
   // @ts-ignore
-  const { urlPath, __data: data } = md;
+  const { __path, __data: data } = md;
   const hoistedTags = data.hoistedTags || (data.hoistedTags = []);
   // console.log('meta: ', meta);
   let htmlOpenString = `<${demoContainer}`;
@@ -118,13 +118,13 @@ function genDemo(meta, md: MarkdownIt) {
   }
   if (!meta.src) {
     let errorStr = `NotFound: src should be a string, but got ${meta.src}`;
-    console.error(urlPath, meta.src);
+    console.error(__path, meta.src);
     throw new Error(errorStr);
     // attrsStr += ` codeStr="${encodeURIComponent(errorStr)}"`;
     // htmlOpenString += ` ${attrsStr}><pre>${errorStr}</pre>`;
     // return { htmlOpenString };
   }
-  const currentDir = path.dirname(urlPath);
+  const currentDir = path.dirname(__path);
   let absolutePath = path.resolve(currentDir, meta.src);
   const srcFile = resolveFile(absolutePath);
   if (meta.language) {
