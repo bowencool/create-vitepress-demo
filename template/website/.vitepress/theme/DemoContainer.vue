@@ -203,7 +203,7 @@
   .browser-nav {
     padding: 2px 8px 2px;
     background-color: #ebedf1;
-    & ~ .demo-container {
+    & + .demo-container {
       border-top: 0;
     }
     &::before {
