@@ -1,6 +1,10 @@
 import { defineConfig } from 'rollup';
 import genBaseConfig, { INPUT_PATH } from './rollup.config.base';
 
+const banner = `/*!
+* ${process.env.npm_package_name} v${process.env.npm_package_version}
+*/`;
+
 const componentsConfig = defineConfig([
   {
     ...genBaseConfig(),
@@ -10,6 +14,7 @@ const componentsConfig = defineConfig([
         // file: 'es/index.js',
         dir: 'es',
         format: 'es',
+        banner,
         preserveModules: true,
         preserveModulesRoot: 'packages',
       },
@@ -22,6 +27,7 @@ const componentsConfig = defineConfig([
       {
         // file: 'es/index.js',
         dir: 'cjs',
+        banner,
         format: 'cjs',
         preserveModules: true,
         preserveModulesRoot: 'packages',
