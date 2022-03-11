@@ -3,7 +3,7 @@ import MarkdownIt from 'markdown-it';
 import path from 'path';
 import fs from 'fs';
 // import md5 from 'md5';
-import { highlight } from 'vitepress/dist/node/serve-777539c0';
+import { highlight } from './highlight';
 import { config as vitepressConfig } from '../../config';
 
 let count = 1001;
