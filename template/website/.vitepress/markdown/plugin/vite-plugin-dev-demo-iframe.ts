@@ -1,5 +1,5 @@
 import type { Plugin, ViteDevServer } from 'vite';
-import { readFileSync } from 'fs';
+import { readFileSync, accessSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { genHtml } from './genIframe';
 
@@ -21,6 +21,12 @@ export default function demoIframe(): Plugin {
             // console.log('接到 demo iframe 请求', demoName);
             // 我不知道 markdown-it-plugin 怎么跟 vite-plugin 低成本取得联系，所以直接通过文件传参了。这个文件是 markdown-it-demo 生成的。
             // 由于 vite 的特性，文件内容是 lazy 的，所以这里需要每次读取文件以确保可以正确访问到。
+            try {
+              accessSync(demosPath)
+            } catch (error) {
+              // 防止初次执行时, demos 不存在
+              writeFileSync(demosPath, '[]')
+            }
             const demos = JSON.parse(readFileSync(resolve(process.cwd(), 'node_modules/demos.json'), 'utf-8'));
             const meta = demos[demoName];
             if (!meta?.entry) {
