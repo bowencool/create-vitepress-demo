@@ -55,9 +55,8 @@ async function main() {
       ],
     },
   );
-  // todo 这个文件不太灵
   // await fs.copySync(__dirname + '.gitignore', `${targetDir}/.gitignore`);
-  await execAsync(`cp ${__dirname}/template/.gitignore ${targetDir}/.gitignore`);
+  // await execAsync(`cp ${__dirname}/template/.gitignore ${targetDir}/.gitignore`);
   // todo 这个link不太灵
   await execAsync(`ln -s ../CHANGELOG.md changelog.md`, { cwd: `${targetDir}/website` });
 
