@@ -1,6 +1,6 @@
 # create-vitepress-demo
 
-搭建一个带有专业 demo 演示能力的 vitepress 项目，查看[相关介绍](https://github.com/bowencool/blog/issues/15)、[示例站点](https://bowencool.github.io/create-vitepress-demo/guide/contribution.html)
+搭建一个带有专业 demo 演示能力的 vitepress 项目，查看[相关介绍](https://blog.bowen.cool/zh/posts/add-more-professional-demo-presentation-capabilities-to-vitepress)、[示例站点](https://bowencool.github.io/create-vitepress-demo/guide/contribution.html)
 
 ```bash
 npm init vitepress-demo
